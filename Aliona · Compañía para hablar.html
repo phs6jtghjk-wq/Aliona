@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Aliona · Compañía para hablar</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,700;1,500&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#1a0f1f;--bg2:#241529;--ink:#efe6dc;--mute:#b9a9b5;--rose:#d4577f;--brass:#c9a66b;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.6 "DM Sans",system-ui,sans-serif}
+h1,h2,h3{font-family:"Cormorant Garamond",Georgia,serif;font-weight:700;line-height:1.1;margin:0}
+.wrap{max-width:960px;margin:0 auto;padding:0 22px}
+.hero{padding:64px 0 32px}
+.hero h1{font-size:clamp(3.4rem,11vw,6.5rem);letter-spacing:-.02em}
+.hero p{color:var(--mute);max-width:32ch;font-size:1.15rem}
+button.btn{border:0;font:inherit;font-weight:500;cursor:pointer;width:100%}
+dialog{background:var(--bg2);color:var(--ink);border:2px solid var(--brass);border-radius:20px;padding:26px 22px;max-width:440px;width:calc(100% - 32px)}
+dialog::backdrop{background:rgba(0,0,0,.7)}
+.copy{background:none;border:1px solid var(--brass);color:var(--brass);border-radius:999px;padding:4px 12px;font:inherit;font-size:.85rem;cursor:pointer;margin-left:8px}
+.ghost{background:none;border:0;color:var(--mute);font:inherit;cursor:pointer;margin-top:12px;width:100%;padding:8px}
+.btn{display:inline-block;background:var(--rose);color:#fff;text-decoration:none;padding:13px 26px;border-radius:999px;font-weight:500;margin-top:10px}
+.btn:focus-visible,a:focus-visible{outline:3px solid var(--brass);outline-offset:3px}
+.portrait{width:100%;max-width:340px;justify-self:center;filter:drop-shadow(0 18px 40px rgba(212,87,127,.25))}
+section{padding:44px 0}
+h2{font-size:clamp(2rem,6vw,3rem);margin-bottom:8px}
+.sub{color:var(--mute);margin:0 0 28px;max-width:52ch}
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;align-items:stretch}
+.plan{background:var(--bg2);border:1px solid #3a2741;border-radius:20px;padding:26px 22px;display:flex;flex-direction:column}
+.plan.top{border:2px solid var(--brass);background:linear-gradient(180deg,#2e1a33,var(--bg2))}
+.plan h3{font-size:1.9rem}
+.price{font-family:"Cormorant Garamond",serif;font-size:2.6rem;font-weight:700;color:var(--brass);margin:6px 0}
+.price small{font-size:1rem;color:var(--mute);font-family:"DM Sans",sans-serif;font-weight:400}
+.plan ul{padding-left:18px;margin:10px 0 18px;color:var(--mute);flex:1}
+.plan .btn{text-align:center;margin-top:0}
+.tag{font-size:.85rem;color:var(--brass);margin-bottom:4px}
+.box{background:var(--bg2);border:1px solid #3a2741;border-radius:20px;padding:26px 22px}
+.bank{display:grid;grid-template-columns:auto 1fr;gap:6px 18px;margin:14px 0 0}
+.bank dt{color:var(--mute)}.bank dd{margin:0;font-weight:500;overflow-wrap:anywhere}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.steps p{margin:4px 0 0;color:var(--mute)}
+footer{padding:32px 0 48px;color:var(--mute);font-size:.9rem;border-top:1px solid #3a2741}
+@media(max-width:760px){.plans,.steps{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="hero">
+  <div>
+    <h1>Aliona</h1>
+    <p>Un rato para hablar, sin juicios y sin prisa. Aquí siempre hay alguien que te escucha.</p>
+    <a class="btn" href="#planes">Ver planes</a>
+  </div>
+</header>
+
+<section id="planes">
+  <h2>Elige cómo quieres hablar</h2>
+  <p class="sub">Todas las sesiones son por Zoom. Tú decides cuánto tiempo y de qué manera.</p>
+  <div class="plans">
+    <article class="plan">
+      <h3>Chat</h3>
+      <div class="price">$10 <small>/ 30 min</small></div>
+      <ul><li>Conversación por mensajes</li><li>Sin cámara ni voz</li><li>Ideal para empezar</li></ul>
+      <button class="btn pay" data-plan="Chat" data-price="$10">Reservar chat</button>
+    </article>
+    <article class="plan">
+      <h3>Voz</h3>
+      <div class="price">$20 <small>/ 30 min</small></div>
+      <ul><li>Llamada de solo audio por Zoom</li><li>Hablamos con calma, en directo</li><li>Sin cámara</li></ul>
+      <button class="btn pay" data-plan="Voz" data-price="$20">Reservar voz</button>
+    </article>
+    <article class="plan top">
+      <div class="tag">El más completo</div>
+      <h3>Cámara</h3>
+      <div class="price">$40 <small>/ 30 min</small></div>
+      <ul><li>Videollamada por Zoom, cara a cara</li><li>Me ves a mí, siempre con mi máscara negra</li><li>Tu cámara encendida</li></ul>
+      <button class="btn pay" data-plan="Cámara" data-price="$40">Reservar cámara</button>
+    </article>
+  </div>
+</section>
+
+<section>
+  <h2>Cómo funciona</h2>
+  <div class="steps" style="margin-top:20px">
+    <div><h3>Elige</h3><p>Escoge el plan que más te guste.</p></div>
+    <div><h3>Paga</h3><p>Paga por Bizum o transferencia y envíame el comprobante.</p></div>
+    <div><h3>Conéctate</h3><p>Te envío el enlace de Zoom y hablamos.</p></div>
+  </div>
+</section>
+
+<section id="pago">
+  <h2>Pago y regalos</h2>
+  <p class="sub">También puedes enviarme un regalo si quieres tener un detalle conmigo. Se agradece de corazón.</p>
+  <div class="box">
+    <h3>Datos bancarios</h3>
+    <dl class="bank">
+            <dt>Bizum</dt><dd>611 32 15 76</dd>
+      <dt>Banco</dt><dd>CaixaBank</dd>
+      <dt>IBAN</dt><dd>ES40 2100 3339 5422 0045 3935</dd>
+      <dt>Concepto</dt><dd>Aliona + tu nombre + plan</dd>
+    </dl>
+    <p style="color:var(--mute);margin-bottom:0">Después de pagar, escríbeme con tu comprobante y acordamos día y hora.</p>
+  </div>
+</section>
+
+<footer>
+  Aliona es un nombre artístico. Este servicio es de compañía y conversación; no sustituye la ayuda de un profesional de salud mental.
+</footer>
+</div>
+
+<dialog id="dlg" aria-labelledby="dt">
+  <h3 id="dt">Plan</h3>
+  <div class="price" id="dp"></div>
+  <p style="margin:0;color:var(--mute)">Paga por Bizum o transferencia y envíame el comprobante. Te mando el enlace de Zoom en cuanto lo reciba.</p>
+  <dl class="bank">
+        <dt>Bizum</dt><dd><span id="biz">611 32 15 76</span><button class="copy" id="cp2" type="button">Copiar</button></dd>
+    <dt>Banco</dt><dd>CaixaBank</dd>
+    <dt>IBAN</dt><dd><span id="acc">ES40 2100 3339 5422 0045 3935</span><button class="copy" id="cp" type="button">Copiar</button></dd>
+    <dt>Concepto</dt><dd id="dc"></dd>
+  </dl>
+  <a class="btn" id="wa" style="display:block;text-align:center;margin-top:18px" href="https://wa.me/34692096330" target="_blank" rel="noopener">Ya pagué, enviar comprobante por WhatsApp</a>
+  <button class="ghost" id="cl" type="button">Cerrar</button>
+</dialog>
+<script>
+var d=document.getElementById('dlg');
+document.querySelectorAll('.pay').forEach(function(b){b.addEventListener('click',function(){
+document.getElementById('dt').textContent='Plan '+b.dataset.plan;
+document.getElementById('dp').textContent=b.dataset.price+' / 30 min';
+document.getElementById('dc').textContent='Aliona - '+b.dataset.plan;
+document.getElementById('wa').href='https://wa.me/34692096330?text='+encodeURIComponent('Hola Aliona, ya hice el pago del plan '+b.dataset.plan+' ('+b.dataset.price+'). Te envío el comprobante.');d.showModal();});});
+document.getElementById('cl').onclick=function(){d.close()};
+document.getElementById('cp2').onclick=function(){var e=this;try{navigator.clipboard.writeText('611321576').then(function(){e.textContent='Copiado'})}catch(x){e.textContent='Copia el número'}};
+document.getElementById('cp').onclick=function(){var t=document.getElementById('acc').textContent.replace(/\s/g,''),e=this;
+try{navigator.clipboard.writeText(t).then(function(){e.textContent='Copiado'})}catch(x){e.textContent='Selecciona y copia'}};
+</script>
+</body>
+</html>
